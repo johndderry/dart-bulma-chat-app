@@ -6,3 +6,5 @@ Learn how I built this in this [series of articles](https://dev.to/graphicbeacon
 
 Created from templates made available by Stagehand under a BSD-style
 [license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+
+This fork has been updated for Dart null safety

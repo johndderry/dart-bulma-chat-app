@@ -14,13 +14,13 @@ main() async {
   await for (HttpRequest request in server) {
     // TODO: Remove only temporary
     request.response.headers
-        .add('Access-Control-Allow-Origin', 'http://localhost:8084');
+        .add('Access-Control-Allow-Origin', 'http://localhost:8080');
 
     print('[Incoming request]: ${request.uri.path} ${request.session.id}');
 
     switch (request.uri.path) {
       case '/signin':
-        String payload = await request.transform(Utf8Decoder()).join();
+        String payload = await utf8.decoder.bind(request).join();
         var username = Uri.splitQueryString(payload)['username'];
         if (username != null && username.isNotEmpty) {
           // TODO: Check username is unique
@@ -35,7 +35,8 @@ main() async {
         }
         break;
       case '/ws':
-        String username = request.uri.queryParameters['username'];
+        String? username = request.uri.queryParameters['username'];
+        if( username == null ) username = 'none';
         chatRoomSession.addChatter(request, username);
         break;
       default:

@@ -1,6 +1,6 @@
 // Absolute imports
 import 'dart:html';
-import 'dart:convert';
+//import 'dart:convert';
 
 // Package imports
 import 'package:dart_bulma_chat_app/src/chat_room_subject.dart';
@@ -21,11 +21,12 @@ class ChatRoomView implements View {
   final ChatRoomSubject _subject;
   final Map params;
   DocumentFragment _contents;
-  DivElement chatRoomBox;
-  DivElement chatRoomLog;
-  InputElement messageField;
-  ButtonElement sendBtn;
-  ButtonElement leaveBtn;
+
+  var chatRoomBox;
+  var chatRoomLog;
+  var messageField;
+  var sendBtn;
+  var leaveBtn;
 
   @override
   void onEnter() {
@@ -94,9 +95,9 @@ class ChatRoomView implements View {
 
   @override
   render() {
-    querySelector('#app')
-      ..innerHtml = ''
-      ..append(_contents);
+    var s = querySelector('#app');
+    s?.innerHtml = '';
+    s?.append(_contents);
   }
 
   void _addEventListeners() {

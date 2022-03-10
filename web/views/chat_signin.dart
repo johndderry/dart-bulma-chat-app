@@ -12,11 +12,11 @@ class ChatSigninView implements View {
 
   /// Properties
   DocumentFragment _contents;
-  DivElement chatSigninBox;
-  ParagraphElement validationBox;
-  InputElement nameField;
-  ButtonElement submitBtn;
-  HttpRequest _response;
+  late var chatSigninBox;
+  late var validationBox;
+  late var nameField;
+  late var submitBtn;
+  late HttpRequest _response;
 
   @override
   void onEnter() {
@@ -72,9 +72,9 @@ class ChatSigninView implements View {
 
   @override
   render() {
-    querySelector('#app')
-      ..innerHtml = ''
-      ..append(_contents);
+    var s = querySelector('#app');
+    s?.innerHtml = '';
+    s?.append(_contents);
   }
 
   void _addEventListeners() {

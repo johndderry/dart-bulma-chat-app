@@ -3,7 +3,7 @@ import 'dart:convert';
 enum ActionTypes { newChat, chatMessage, leaveChat }
 
 ActionTypes getActionType(String typeStr) {
-  ActionTypes matchedActionType;
+  ActionTypes matchedActionType = ActionTypes.newChat;
   ActionTypes.values.forEach((actionType) {
     if (actionType.toString() == typeStr) {
       matchedActionType = actionType;

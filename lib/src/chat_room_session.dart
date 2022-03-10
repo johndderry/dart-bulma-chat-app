@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'helpers.dart';
 
 class Chatter {
-  Chatter({this.session, this.socket, this.name});
+  Chatter({required this.session, required this.socket, required this.name});
   HttpSession session;
   WebSocket socket;
   String name;
@@ -45,7 +45,7 @@ class ChatRoomSession {
       case ActionTypes.newChat:
         chatter.socket.add(encodeMessage(
           ActionTypes.newChat,
-          null,
+          '',
           'Welcome to the chat ${chatter.name}',
         ));
         _notifyChatters(
@@ -80,10 +80,10 @@ class ChatRoomSession {
     );
   }
 
-  _notifyChatters(ActionTypes actionType, Chatter exclude, [String message]) {
+  _notifyChatters(ActionTypes actionType, Chatter exclude, [String message = '']) {
     var from =
         actionType == ActionTypes.newChat || actionType == ActionTypes.leaveChat
-            ? null
+            ? ''
             : exclude.name;
 
     _chatters

@@ -17,7 +17,7 @@ class ChatRoomSubject {
   _initListeners() {
     socket.onOpen.listen((evt) {
       print('Socket is open');
-      send(encodeMessage(ActionTypes.newChat, null, null));
+      send(encodeMessage(ActionTypes.newChat, '', ''));
     });
 
     socket.onError.listen((evt) {
